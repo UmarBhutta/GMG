@@ -28,8 +28,13 @@ internal class UserListRecyclerView(private val recyclerView: RecyclerView, priv
     }
 
     fun render(users: List<User>) {
-        this.users = users
-        recyclerView.adapter?.notifyDataSetChanged()
+        if (this.users != null){
+            addMore(users)
+        }else{
+            this.users = users
+            recyclerView.adapter?.notifyDataSetChanged()
+        }
+
     }
 
     fun addMore(moreUsers: List<User>) {
@@ -80,8 +85,9 @@ internal class UserListRecyclerView(private val recyclerView: RecyclerView, priv
 
         fun render(user: User) {
             this.userItem = user
-            Picasso.get().load(user.picture.large).transform(CircleTransform()).into(binding.avatar)
-            binding.name.text = "${user.name.title} ${user.name.first} ${user.name.last}"
+            Picasso.get().load(user.picture.medium).transform(CircleTransform()).into(binding.avatar)
+            binding.name.text = user.name.first +" "+user.name.last
+            binding.gender.text = user.gender
         }
     }
 

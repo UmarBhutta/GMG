@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/avatar"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
         android:layout_margin="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,24 +24,24 @@
         android:ellipsize="end"
         android:lines="1"
         android:textSize="24sp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avatar"
-        tools:text="Mr Name Lastname" />
+        tools:text="Name Lastname" />
 
     <TextView
-        android:id="@+id/email"
+        android:id="@+id/gender"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:autoLink="email"
-        android:ellipsize="end"
+        android:textAllCaps="true"
         android:lines="1"
-        android:textSize="20sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name"
-        tools:text="Email" />
+        tools:text="Gender" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

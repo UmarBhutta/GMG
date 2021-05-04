@@ -39,44 +39,12 @@ class UserDetails : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         args.user.apply {
             Picasso.get().load(picture.large).transform(CircleTransform()).into(binding.avatar)
-            binding.name.text = "${name.title} ${name.first} ${name.last}"
-            binding.email.text = email
+            binding.name.text = "${name.first} ${name.last}"
+            binding.gender.text = gender
         }
-        binding.avatar.setOnClickListener { dispatchTakePictureIntent() }
+
     }
 
-    private fun dispatchTakePictureIntent() {
-        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        try {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-        } catch (e: ActivityNotFoundException) {
-            // display error state to the user
-        }
-    }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            val imageBitmap = data?.extras?.get("data") as Bitmap
-            Picasso.get().load(getImageUri(requireActivity(), imageBitmap)).transform(
-                CircleTransform()
-            ).into(binding.avatar)
-        }
-    }
-
-    private fun getImageUri(inContext: Context, inImage: Bitmap): Uri? {
-        val bytes = ByteArrayOutputStream()
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
-        val path = MediaStore.Images.Media.insertImage(inContext.contentResolver, inImage, "Title", null)
-        return Uri.parse(path)
-    }
-
-    fun composeEmail(address: String) {
-        val intent = Intent(Intent.ACTION_SENDTO)
-        intent.data = Uri.parse("mailto:") // only email apps should handle this
-        intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(address))
-        if (intent.resolveActivity(requireActivity().packageManager) != null) {
-            startActivity(intent)
-        }
-    }
 
 }

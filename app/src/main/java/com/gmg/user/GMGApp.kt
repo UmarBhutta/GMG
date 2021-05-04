@@ -3,6 +3,7 @@ package com.gmg.user
 import android.app.Application
 import com.gmg.user.di.appModule
 import com.gmg.user.di.repoModule
+import com.gmg.user.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -15,7 +16,7 @@ class GMGApp : Application() {
         startKoin {
             androidLogger(Level.ERROR)
             androidContext(this@GMGApp)
-            modules(appModule, repoModule)
+            modules(appModule, repoModule, viewModelModule)
         }
     }
 
