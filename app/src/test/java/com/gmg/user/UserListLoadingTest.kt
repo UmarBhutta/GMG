@@ -10,10 +10,10 @@ import com.gmg.user.utils.Status
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
-import kotlinx.coroutines.test.TestCoroutineScope
+
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
-import kotlinx.coroutines.withTimeout
+
 import org.junit.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.loadKoinModules
@@ -24,7 +24,7 @@ import org.koin.test.KoinTest
 import org.koin.test.inject
 import org.mockito.*
 import org.mockito.Mockito.timeout
-import org.mockito.Mockito.times
+
 import testApp
 
 
