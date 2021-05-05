@@ -47,9 +47,6 @@ class UserListFragmentTest {
         //onView(withId(R.id.usersList)).perform(RecyclerViewActions.actionOnItemAtPosition<UserListRecyclerView.ShowHolder>(2, click()))
 
 
-
-
-
         //Mock User Object fot the navigation testing
 
         InstrumentationRegistry.getInstrumentation().runOnMainSync{

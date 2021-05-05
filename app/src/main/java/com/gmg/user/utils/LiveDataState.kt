@@ -17,7 +17,7 @@ data class LiveDataState<out T>(val status: Status, val data: T?, val message: S
         }
 
         fun <T> emptyData(data: T?): LiveDataState<T> {
-            return LiveDataState(Status.LOADING, data, null)
+            return LiveDataState(Status.EMPTY, data, null)
         }
 
         fun <T> canceled(data: T?): LiveDataState<T> {

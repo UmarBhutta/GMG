@@ -23,14 +23,14 @@ class UserViewModel(
         fetchUsers(page)
     }
 
-    private fun fetchUsers(pageNumber:Int) {
+    fun fetchUsers(pageNumber:Int) {
         viewModelScope.launch {
 
             if(pageNumber == 1){
                 _users.postValue(LiveDataState.loading(null))
             }else _users.postValue(LiveDataState.loading(users.value!!.data))
 
-            if (networkHelper.isNetworkConnected()) {
+            //if (networkHelper.isNetworkConnected()) {
                 userRepo.getUsers(pageNumber).let {
                     if (it.isSuccessful){
                         if (it.body() != null){
@@ -39,12 +39,16 @@ class UserViewModel(
                     }else _users.postValue(LiveDataState.error(it.errorBody().toString(), null))
                 }
 
-            } else _users.postValue(LiveDataState.error("No internet connection", null))
+            //} else _users.postValue(LiveDataState.error("No internet connection", null))
         }
     }
 
     fun loadMore(){
         page += 1
         fetchUsers(page)
+    }
+
+    fun loadFirstPage(){
+        fetchUsers(1)
     }
 }
