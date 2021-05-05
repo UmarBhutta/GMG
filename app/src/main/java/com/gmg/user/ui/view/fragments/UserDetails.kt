@@ -26,10 +26,6 @@ class UserDetails : Fragment() {
     private val args: UserDetailsArgs by navArgs()
 
 
-    companion object {
-        private const val REQUEST_IMAGE_CAPTURE = 1
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentUserDetailsBinding.inflate(inflater, container, false)
         return binding.root
@@ -39,8 +35,12 @@ class UserDetails : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         args.user.apply {
             Picasso.get().load(picture.large).transform(CircleTransform()).into(binding.avatar)
-            binding.name.text = "${name.first} ${name.last}"
+            binding.name.text = "${name.title} ${name.first} ${name.last}"
             binding.gender.text = gender
+            binding.email.text = email
+            binding.phone.text = phone
+            binding.cell.text = cell
+            binding.natinality.text = nat
         }
 
     }
